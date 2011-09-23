@@ -63,6 +63,6 @@ suite.discuss('When using mongodb-rest API create/retrieve nested documents')
 				assert.equal(result.data.length, 0);
 			})
         .next()
-        .del("/%/test-db-crud-nested")
+        .del("/test-db-crud-nested")
             .expect(200)
 .export(module);

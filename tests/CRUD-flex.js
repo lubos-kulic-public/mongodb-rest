@@ -79,6 +79,6 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 				assert.equal(result.data.length, 0);
 			})
         .next()
-        .del("/%/test-db-crud-flex")
+        .del("/test-db-crud-flex")
             .expect(200)
 .export(module);

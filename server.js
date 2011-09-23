@@ -37,6 +37,7 @@ exports.create = function(options, hooks) {
 				  	res.send({allCount: allCount, data: data, success: true});
 		  	} else {
 	  			sys.log(sys.inspect(err));
+                console.log(err.stack);
 	  			res.send({success: false, error:err.message});
 		  	}
 		};
@@ -61,11 +62,11 @@ exports.create = function(options, hooks) {
 	});
 	
 	// Routes
-    require("./controllers/admin").register(app);
 	require("./controllers/get").register(app);
 	require("./controllers/post").register(app);
 	require("./controllers/delete").register(app);
 	require("./controllers/put").register(app);
+    require("./controllers/admin").register(app);
 	require("./controllers/index").register(app);
 	
 	// set env value from the config

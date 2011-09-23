@@ -101,6 +101,6 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 				assert.equal(result.data.length, 0);
 			})
         .next()
-        .del("/%/test-db-update-case1")
+        .del("/test-db-update-case1")
             .expect(200)
 .export(module);

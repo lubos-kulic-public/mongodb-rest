@@ -68,6 +68,6 @@ suite.discuss('When using mongodb-rest API create/retrieve')
                 assert.equal(result.allCount, 2);
 			})
         .next()
-        .del("/%/test-db")
+        .del("/test-db")
             .expect(200)
 .export(module);

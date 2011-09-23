@@ -74,7 +74,7 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 					assert.equal(updatedDocument[i], result.data[0][i]);
 
                 suite.before('getID', function(outgoing){
-					outgoing.uri += "/"+result.data._id;
+					outgoing.uri += "/"+result.data[0]._id;
 					return outgoing;
 				});
 			})
@@ -95,6 +95,6 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 				assert.equal(result.data.length, 0);
 			})
         .next()
-        .del("/%/test-db")
+        .del("/test-db")
             .expect(200)
 .export(module);

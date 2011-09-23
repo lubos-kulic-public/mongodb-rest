@@ -1,6 +1,6 @@
 var mongo = require("mongodb");
 var ObjectID = require("mongodb/external-libs/bson").ObjectID;
-var dereference = require("./helpers/dereference");
+var dereferenceFunc = require("./helpers/dereference");
 var dbconnection = require("./helpers/dbconnection");
 var jsonUtils = require("./helpers/jsonUtils");
 var sys = require("sys");
@@ -34,14 +34,12 @@ module.exports = function(target, spec, options, next) {
 		db.collection(target.collection, function(err, collection) {
 
 			if(spec._id) { // dereference is currently supported only for single object
-    		
-				// if there is requested object by ID -> query only One document
+    
+    			// if there is requested object by ID -> query only One document
 				collection.findOne(spec, options, function(err, doc){
-					if(doc == null)
-						err = new Error("not found");
 
-					if(dereference == true) {
-						dereference(db, doc, function(err) {
+					if(dereference == true && doc != null) {
+						dereferenceFunc(db, doc, function(err) {
 							next(err, doc);
 						});
 					} else
