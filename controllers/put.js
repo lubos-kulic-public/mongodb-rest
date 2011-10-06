@@ -13,7 +13,7 @@ exports.register = function(app){
 
         // check does the body contains $inc, & etc... specific mongodb update ops 
         // determines to use $set: {...} or not 
-        if(JSON.stringify(req.body).indexOf("$") != -1) // TODO ugly way to check the entire body for $ char, improve
+        if(JSON.stringify(req.body).indexOf("$") != -1) // TODO optimize
             options.set = false;
         else
             options.set = true;

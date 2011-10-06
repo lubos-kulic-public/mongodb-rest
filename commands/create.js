@@ -1,5 +1,4 @@
 var mongo = require("mongodb");
-var ObjectID = require("mongodb/external-libs/bson").ObjectID;
 var dereference = require("./helpers/dereference");
 var dbconnection = require("./helpers/dbconnection");
 var jsonUtils = require("./helpers/jsonUtils");
@@ -20,7 +19,7 @@ module.exports = function(target, data, options, next) {
             var insertInCollection = function() {
 			    collection.insert(data, function(err, docs) {
                     next(err, docs);
-				    db.close();
+				    //db.close();
 			    });
             };
 

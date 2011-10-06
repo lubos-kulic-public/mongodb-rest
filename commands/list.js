@@ -1,5 +1,5 @@
 var mongo = require("mongodb");
-var ObjectID = require("mongodb/external-libs/bson").ObjectID;
+//var ObjectID = require("mongodb/external-libs/bson").ObjectID;
 var dereferenceFunc = require("./helpers/dereference");
 var dbconnection = require("./helpers/dbconnection");
 var jsonUtils = require("./helpers/jsonUtils");
@@ -22,13 +22,7 @@ module.exports = function(target, spec, options, next) {
     // deep decode spec
 	jsonUtils.deepDecode(spec);
 
-	// Providing an id overwrites giving a query in the URL
-	if (spec._id) {
-		if(/^[0-9a-fA-F]{24}$/.test(spec._id))
-			spec._id = new ObjectID(spec._id);
-		else
-			spec._id = spec._id;
-	}
+	
 
 	dbconnection.open(target.db, target.connection, function(err,db) {
 		db.collection(target.collection, function(err, collection) {
@@ -45,7 +39,7 @@ module.exports = function(target, spec, options, next) {
 					} else
 						next(err, doc);
 	              
-					db.close();
+					//db.close();
 				});
 			} else {
 
@@ -61,7 +55,7 @@ module.exports = function(target, spec, options, next) {
 						} else
 							next(err, docs);
 		            
-						db.close();
+						//db.close();
 					});
 				});
 			}

@@ -13,6 +13,8 @@ exports.create = function(options, hooks) {
 	    app.set('view engine', 'jade');
         app.set('options', options);
 	    app.set('dbconnection', options.dbconnection);
+
+	    // TODO middleware support for object commands
         if(options.augmentWithTimestamps)
             app.set("augmentObject", function(command) {
                 if(command == "create")
@@ -28,6 +30,7 @@ exports.create = function(options, hooks) {
                     }
             });
 	    
+	    // TODO middleware for response rendering
 	    app.renderResponse = function(res, err, data, allCount) {
 		  	res.header('Content-Type', 'application/json');
 		  	if(err == null) {
@@ -44,10 +47,13 @@ exports.create = function(options, hooks) {
 
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
+
+		// TODO this really should not exist... 
 		if(typeof hooks != "undefined" && hooks['pre-router']) {
 			hooks['pre-router'](app);
 			sys.log("pre-router hook executed");
 		}
+
 		app.use(app.router);
 		app.use(express.static(__dirname + '/public'));
 	});

@@ -2,7 +2,7 @@
   "author": "Boris Filipov <obiwonn@gmail.com> (http://obi.wizartworx.com)",
   "name": "mongodb-rest2",
   "description": "mongodb rest interface",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "repository": {
     "type": "git",
     "url": "git://github.com/ActiveUnits/mongodb-rest.git"
@@ -17,7 +17,7 @@
   },
   "dependencies": { 
     "express": "2.4.7", 
-    "mongodb": "http://github.com/ActiveUnits/node-mongodb-native/tarball/master", 
+    "mongodb": "0.9.6-21",
     "jade": ">= 0.0.1", 
     "optimist": ">= 0.1.3",
     "api-easy": ">= 0.2.3",
