@@ -21,7 +21,7 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 					assert.equal(result.data[i], initialDocument[i]);
 			})
 		.next()
-        .post(endpoint, initialDocument2)
+        .post(endpoint+"?1", initialDocument2)
 			.expect(200)
 			.expect('should respond with created document containing ID', function(err, res, body){
 				var result = JSON.parse(body);
@@ -31,7 +31,7 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 					assert.equal(result.data[i], initialDocument2[i]);
 			})
 		.next()
-		.post(endpoint, initialDocument)
+		.post(endpoint+"?2", initialDocument)
 			.expect(200)
 			.expect('should respond with created document containing ID', function(err, res, body){
 				var result = JSON.parse(body);
@@ -49,6 +49,7 @@ suite.discuss('When using mongodb-rest API create/retrieve')
 				assert.isArray(result.data);
 				assert.equal(result.data.length, 3);
                 assert.equal(result.allCount, 3);
+                assert.isString(result.data[0]._id);
 			})
         .next()
         .get(endpoint+"?limit=1")
