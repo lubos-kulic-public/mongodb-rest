@@ -23,8 +23,9 @@ var decodeField = exports.decodeField = function(value) {
         return new DBRef(value['namespace'], value['oid']);
   }
   
-  if(date.isISO8601(value))
+  if(date.isISO8601(value)) {
      return new Date(value);
+   }
      
   return value;
 }
